@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import './App.css'
+import {Link} from 'react-router-dom'
+import Questionare from './Components/Questionare';
 const TravelShowcase = () => {
   const [menuActive, setMenuActive] = useState(false);
 
@@ -23,21 +25,21 @@ const TravelShowcase = () => {
         <p>At CareerShip, we simplify your job search with personalized career advice through our AI-driven process. Whether you need help exploring new paths, refining your resume, or preparing for interviews, we’re here to support you.</p>
         <p>Start your journey toward your dream job today and let CareerShip guide you every step of the way! 
         </p>
-        <a href="#">Explore</a>
+        <Link to="/questions">Get started</Link>
       </div>
       <ul className="social">
-        <li><a href="#"><img src="https://i.ibb.co/x7P24fL/facebook.png" alt="Facebook" /></a></li>
-        <li><a href="#"><img src="https://i.ibb.co/Wnxq2Nq/twitter.png" alt="Twitter" /></a></li>
-        <li><a href="#"><img src="https://i.ibb.co/ySwtH4B/instagram.png" alt="Instagram" /></a></li>
+        <li><Link><img src="https://i.ibb.co/x7P24fL/facebook.png" alt="Facebook" /></Link></li>
+        <li><Link><img src="https://i.ibb.co/Wnxq2Nq/twitter.png" alt="Twitter" /></Link></li>
+        <li><Link><img src="https://i.ibb.co/ySwtH4B/instagram.png" alt="Instagram" /></Link></li>
       </ul>
     </section>
     <div className={`menu ${menuActive ? 'active' : ''}`}>
       <ul>
-        <li><a href="#">Home</a></li>
-        <li><a href="#">News</a></li>
-        <li><a href="#">Destination</a></li>
-        <li><a href="#">Blog</a></li>
-        <li><a href="#">Contact</a></li>
+        <li><Link>Home</Link></li>
+        <li><Link>News</Link></li>
+        <li><Link>Destination</Link></li>
+        <li><Link>Blog</Link></li>
+        <li><Link>Contact</Link></li>
       </ul>
     </div>
     </>
