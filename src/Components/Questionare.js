@@ -1,6 +1,8 @@
 import React from 'react'
 import "./Questionare.css"
 import { useState } from 'react';
+import axios from 'axios'
+import { useNavigate } from 'react-router-dom';
 import Select from 'react-select';
 const optionsCareerField = [
     { value: 'software_engineering', label: 'Software Engineering' },
@@ -30,6 +32,7 @@ const optionsSkills = [
 ];
 
 const Questionare = () => {
+    const navigate = useNavigate();
     const [selectedCareerFields, setSelectedCareerFields] = useState([]);
     const [selectedSkills, setSelectedSkills] = useState([]);
     const [showOtherCareerFieldInput, setShowOtherCareerFieldInput] = useState(false);
@@ -62,7 +65,8 @@ const Questionare = () => {
         setShowOtherInput(selectedValue === 'other');
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
+        
         e.preventDefault();
         const formData = new FormData(e.target);
         const data = {
@@ -77,6 +81,16 @@ const Questionare = () => {
             degrees: selectedDegrees.map(degree => degree.value === 'other' ? formData.get('other_degree') : degree.value),
             learningStyles: selectedLearningStyles.map(style => style.value),
         };
+
+        try {
+            const response = await axios.post('https://backend-1t9mwelyx-mubashir19s-projects.vercel.app/userinfo', data);
+            console.log('Response:', response.data);
+            
+            navigate(`/user/${`id-${Date.now()}-${Math.floor(Math.random() * 1000)}`}`, { state: {data: data, response: response.data} });
+          } catch (error) {
+            console.error('Error submitting user info:', error);
+          }
+        
         console.log(data)
     }
 
@@ -258,7 +272,7 @@ const Questionare = () => {
                         </div>
                     </fieldset>
 
-                    <button type="submit">Continue</button>
+                    <button type="submit" style={{cursor: "pointer"}}>Continue</button>
                 </form>
             </div>
         </div >

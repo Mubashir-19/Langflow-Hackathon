@@ -1,0 +1,186 @@
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.intro {
+  background: rgb(128, 82, 255);
+  padding: 70px 0;
+}
+
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+}
+.Advice-Section {
+    margin: auto;
+    width: 900px;
+}
+
+.phase{
+    display: block;
+    font-size: 25px;
+    font-weight: bold;
+}
+
+/* TIMELINE
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+.timeline{
+  background: white;
+  padding: 30px 0;
+}
+
+ .timeline ul li{
+  background: rgb(195, 214, 255);
+}
+
+.timeline ul li {
+  list-style-type: none;
+  position: relative;
+  width: 6px;
+  margin: 0 auto;
+  padding-top: 10px;
+  background: 89afff !important;
+}
+
+.timeline ul li::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: inherit;
+}
+
+/*Main content boxes*/ 
+.timeline ul li div {
+  position: relative;
+  bottom: 0;
+  width: 400px;
+  color: white;
+  padding: 15px;
+  background: rgb(128, 82, 255);
+}
+
+/*Boxes around the triangle to the main content box*/
+.timeline ul li div::before {
+  content: '';
+  position: absolute;
+  bottom: 7px;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  
+}
+
+/*Distance from line to right content box*/
+.timeline ul li:nth-child(odd) div {
+  left: 45px;
+}
+
+/*Css and distance for right triangle*/
+.timeline ul li:nth-child(odd) div::before {
+  left: -15px;
+  border-width: 8px 16px 8px 0;
+  border-color: transparent rgb(128, 82, 255) transparent transparent;
+}
+
+/*Distance for left content main box*/
+.timeline ul li:nth-child(even) div {
+  left: -439px;
+}
+
+/*Box for left triangle box*/
+.timeline ul li:nth-child(even) div::before {
+  right: -15px;
+  border-width: 8px 0 8px 16px;
+  border-color: transparent transparent transparent rgb(128, 82, 255);
+}
+
+/*Css for phase text inside the box*/
+phase {
+  display: block;
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+
+/* EFFECTS
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+.timeline ul li::after {
+  transition: background .5s ease-in-out;
+}
+
+.timeline ul li.in-view::after {
+  background: rgb(97, 146, 251);
+}
+
+.timeline ul li div {
+  visibility: hidden;
+  opacity: 0;
+  transition: all .5s ease-in-out;
+}
+
+.timeline ul li:nth-child(odd) div {
+  transform: translate3d(200px, 0, 0);
+}
+
+.timeline ul li:nth-child(even) div {
+  transform: translate3d(-200px, 0, 0);
+}
+
+.timeline ul li.in-view div {
+  transform: none;
+  visibility: visible;
+  opacity: 1;
+}
+
+
+/* GENERAL MEDIA QUERIES / activates responsive effects when screen is zoomed or on mobile device
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+@media screen and (max-width: 900px) {
+  .timeline ul li div {
+    width: 250px;
+  }
+  .timeline ul li:nth-child(even) div {
+    left: -289px;
+    /*250+45-6*/
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .timeline ul li {
+    margin-left: 20px;
+  }
+  .timeline ul li div {
+    width: calc(100vw - 91px);
+  }
+  .timeline ul li:nth-child(even) div {
+    left: 45px;
+  }
+  .timeline ul li:nth-child(even) div::before {
+    left: -15px;
+    border-width: 8px 16px 8px 0;
+    border-color: transparent rgb(128, 82, 255) transparent transparent;
+  }
+}
+
+
+
+.blurry-text {
+   text-shadow: 0 0 10px white;
+   color: transparent;
+}

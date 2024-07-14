@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
+import UserInfo from './Components/UserInfo';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import reportWebVitals from './reportWebVitals';
 import Questionare from './Components/Questionare';
@@ -13,6 +14,7 @@ root.render(
     <Routes>
       <Route path="/" element={<App />} />
       <Route path="/questions" element={<Questionare />} />
+      <Route path="/user/:id" element={<UserInfo />} />
       {/* <Route path="/contact" element={<Contact />} /> */}
     </Routes>
     </Router>
