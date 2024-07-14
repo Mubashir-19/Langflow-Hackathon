@@ -83,7 +83,7 @@ const Questionare = () => {
         };
 
         try {
-            const response = await axios.post('https://backend-1t9mwelyx-mubashir19s-projects.vercel.app/userinfo', data);
+            const response = await axios.post('https://backend-omega-nine-30.vercel.app/userinfo', data);
             console.log('Response:', response.data);
             
             navigate(`/user/${`id-${Date.now()}-${Math.floor(Math.random() * 1000)}`}`, { state: {data: data, response: response.data} });
